@@ -10,10 +10,16 @@ use App\Domains\Auth\Events\User\UserStatusChanged;
 use App\Domains\Auth\Events\User\UserUpdated;
 use App\Domains\Auth\Models\User;
 use App\Exceptions\GeneralException;
+use App\Models\UserDetails;
 use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\DiskDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileDoesNotExist;
+use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\FileIsTooBig;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+
 
 /**
  * Class UserService.
@@ -202,13 +208,24 @@ class UserService extends BaseService
             session()->flash('resent', true);
         }
 
+        if (isset($data['avatar'])) {
+            $userDetails = $user->details;
+            $userDetails->addReplaceAvatar();
+        }
+
         return tap($user)->save();
     }
 
+    private function startsWith($string, $startString)
+    {
+        $len = strlen($startString);
+        return (substr($string, 0, $len) === $startString);
+    }
+
     /**
-     * @param  User  $user
+     * @param User $user
      * @param $data
-     * @param  bool  $expired
+     * @param bool $expired
      *
      * @return User
      * @throws \Throwable
