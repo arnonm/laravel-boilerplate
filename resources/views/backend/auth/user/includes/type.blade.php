@@ -1,7 +1,7 @@
 @if ($user->isAdmin())
     @lang('Administrator')
 @elseif ($user->isUser())
-    @lang('User')
+    @lang('global.User')
 @else
-    @lang('N/A')
+    @lang('global.N/A')
 @endif

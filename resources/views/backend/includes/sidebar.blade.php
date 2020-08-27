@@ -1,4 +1,4 @@
-<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar" style="background-color: #f6993f">
     <div class="c-sidebar-brand d-lg-down-none">
         <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
             <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
@@ -65,7 +65,7 @@
                                 :href="route('admin.auth.role.index')"
                                 class="c-sidebar-nav-link"
                                 :text="__('Role Management')"
-                                :active="activeClass(Route::is('admin.auth.role.*'), 'c-active')" />
+                                :active="activeClass(Route::is('admin.auth.role.*'), 'c-active')"/>
                         </li>
                     @endif
                 </ul>
@@ -73,12 +73,30 @@
         @endif
 
         @if ($logged_in_user->hasAllAccess())
-            <li class="c-sidebar-nav-item">
+            {{--            <li class="c-sidebar-nav-item">--}}
+            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('log-viewer::*'), 'c-open c-show') }}">
                 <x-utils.link
-                    class="c-sidebar-nav-link"
-                    href="/admin/log-viewer"
+                    href="#"
                     icon="c-sidebar-nav-icon cil-list"
-                    :text="__('Logs')" />
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Logs')"/>
+
+                <ul class="c-sidebar-nav-dropdown-items">
+                    <li class="c-sidebar-nav-item">
+                        <x-utils.link
+                            :href="route('log-viewer::dashboard')"
+                            class="c-sidebar-nav-link"
+                            :text="__('Dashboard')"
+                            :active="activeClass(Route::is('log-viewer::dashboard'), 'c-active')"/>
+                    </li>
+                    <li class="c-sidebar-nav-item">
+                        <x-utils.link
+                            :href="route('log-viewer::logs.list')"
+                            class="c-sidebar-nav-link"
+                            :text="__('Logs')"
+                            :active="activeClass(Route::is('log-viewer::logs.*'), 'c-active')"/>
+                    </li>
+                </ul>
             </li>
         @endif
     </ul>

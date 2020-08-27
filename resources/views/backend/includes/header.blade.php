@@ -1,5 +1,6 @@
-<header class="c-header c-header-light c-header-fixed">
-    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+<header class="c-header  c-header-light c-header-fixed" style="background-color: #f6993f">
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
+            data-class="c-sidebar-show">
         <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
 
