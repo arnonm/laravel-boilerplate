@@ -29,12 +29,17 @@ return [
              * Whether or not admins need 2FA enabled to visit the backend
              */
             'admin_requires_2fa' => env('ADMIN_REQUIRES_2FA', true),
+            'user_requires_2fa' => env('USER_REQUIRES_2FA', true),
 
             /*
              * Whether or not a user can change their email address after
              * their account has already been created
              */
             'change_email' => env('CHANGE_EMAIL', true),
+
+            /* Whether or not a user can change his avatar
+            */
+            'change_avatar' => env('CHANGE_AVATAR', true),
 
             /*
              * When creating users from the backend, only allow the assigning of roles and not individual permissions
@@ -148,29 +153,30 @@ return [
          */
         'languages' => [
             'ar' => ['name' => 'Arabic', 'rtl' => true],
-            'az' => ['name' => 'Azerbaijan', 'rtl' => false],
-            'zh' => ['name' => 'Chinese Simplified', 'rtl' => false],
-            'zh-TW' => ['name' => 'Chinese Traditional', 'rtl' => false],
-            'cs' => ['name' => 'Czech', 'rtl' => false],
-            'da' => ['name' => 'Danish', 'rtl' => false],
-            'de' => ['name' => 'German', 'rtl' => false],
-            'el' => ['name' => 'Greek', 'rtl' => false],
+            'am' => ['name' => 'Amhari', 'rtl' => false],
+//            'az' => ['name' => 'Azerbaijan', 'rtl' => false],
+//            'zh' => ['name' => 'Chinese Simplified', 'rtl' => false],
+//            'zh-TW' => ['name' => 'Chinese Traditional', 'rtl' => false],
+//            'cs' => ['name' => 'Czech', 'rtl' => false],
+//            'da' => ['name' => 'Danish', 'rtl' => false],
+//            'de' => ['name' => 'German', 'rtl' => false],
+//            'el' => ['name' => 'Greek', 'rtl' => false],
             'en' => ['name' => 'English', 'rtl' => false],
             'es' => ['name' => 'Spanish', 'rtl' => false],
-            'fa' => ['name' => 'Persian', 'rtl' => true],
+//            'fa' => ['name' => 'Persian', 'rtl' => true],
             'fr' => ['name' => 'French', 'rtl' => false],
             'he' => ['name' => 'Hebrew', 'rtl' => true],
-            'id' => ['name' => 'Indonesian', 'rtl' => false],
-            'it' => ['name' => 'Italian', 'rtl' => false],
-            'ja' => ['name' => 'Japanese', 'rtl' => false],
-            'nl' => ['name' => 'Dutch', 'rtl' => false],
-            'no' => ['name' => 'Norwegian', 'rtl' => false],
-            'pt_BR' => ['name' => 'Brazilian Portuguese', 'rtl' => false],
+//            'id' => ['name' => 'Indonesian', 'rtl' => false],
+//            'it' => ['name' => 'Italian', 'rtl' => false],
+//            'ja' => ['name' => 'Japanese', 'rtl' => false],
+//            'nl' => ['name' => 'Dutch', 'rtl' => false],
+//            'no' => ['name' => 'Norwegian', 'rtl' => false],
+//            'pt_BR' => ['name' => 'Brazilian Portuguese', 'rtl' => false],
             'ru' => ['name' => 'Russian', 'rtl' => false],
-            'sv' => ['name' => 'Swedish', 'rtl' => false],
-            'th' => ['name' => 'Thai', 'rtl' => false],
-            'tr' => ['name' => 'Turkish', 'rtl' => false],
-            'uk' => ['name' => 'Ukrainian', 'rtl' => false],
+//            'sv' => ['name' => 'Swedish', 'rtl' => false],
+//            'th' => ['name' => 'Thai', 'rtl' => false],
+//            'tr' => ['name' => 'Turkish', 'rtl' => false],
+//            'uk' => ['name' => 'Ukrainian', 'rtl' => false],
         ],
     ],
 
