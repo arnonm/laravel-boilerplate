@@ -11,12 +11,12 @@ use Tabuna\Breadcrumbs\Trail;
 Route::get('/', [HomeController::class, 'index'])
     ->name('index')
     ->breadcrumbs(function (Trail $trail) {
-        $trail->push(__('Home'), route('frontend.index'));
+        $trail->push(__('global.Home'), route('frontend.index'));
     });
 
 Route::get('terms', [TermsController::class, 'index'])
     ->name('pages.terms')
     ->breadcrumbs(function (Trail $trail) {
         $trail->parent('frontend.index')
-            ->push(__('Terms & Conditions'), route('frontend.pages.terms'));
+            ->push(__('global.Terms & Conditions'), route('frontend.pages.terms'));
     });
