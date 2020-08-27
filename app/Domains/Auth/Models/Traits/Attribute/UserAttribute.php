@@ -28,7 +28,7 @@ trait UserAttribute
      */
     public function getAvatarAttribute()
     {
-        return $this->getAvatar();
+        return ($this->details->avatar);
     }
 
     /**
@@ -40,7 +40,7 @@ trait UserAttribute
             return 'All';
         }
 
-        if (! $this->permissions->count()) {
+        if ( !$this->permissions->count()) {
             return 'None';
         }
 
@@ -57,7 +57,7 @@ trait UserAttribute
             return 'All';
         }
 
-        if (! $this->roles->count()) {
+        if ( !$this->roles->count()) {
             return 'None';
         }
 
@@ -67,4 +67,67 @@ trait UserAttribute
             })
             ->implode('<br/>');
     }
+
+    public function getMemberIdAttribute()
+    {
+        return isset($this->details) && isset($this->details->member_id) ? $this->details->member_id : trans('global.not_available');
+    }
+
+    public function getCellPhoneAttribute()
+    {
+        return isset($this->details) && isset($this->details->cell_phone) ? $this->details->cell_phone : trans('global.not_available');
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        return isset($this->details) && isset($this->details->avatar_url) ? $this->details->avatar_url : '';
+    }
+
+    public function getCardPhotoUrlAttribute()
+    {
+        return isset($this->details) && isset($this->details->card_photo_url) ? $this->details->card_photo_url : '';
+    }
+
+    public function getbirthDateAttribute(): string
+    {
+        return isset($this->details) && isset($this->details->birth_date) ?
+            $this->details->birth_date->format('d-m-Y') :
+            trans('global.not_available');
+    }
+
+
+    public function formattedAddress(): string
+    {
+        $formatted_address = $this->details->address;
+        $formatted_address .= ($this->details->address2) ? ", " . $this->details->address2 : '';
+        $formatted_address .= ($this->details->city) ? ", " . $this->details->city : '';
+        $formatted_address .= ($this->details->postcode) ? ', ' . $this->details->postcode : '';
+        return $formatted_address;
+
+    }
+
+    public function getFormattedAddressAttribute(): string
+    {
+        if ( !isset($this->details) || !isset($this->details->address)) {
+            return trans('global.not_available');
+        }
+        $formatted_address = $this->details->address;
+        $formatted_address .= ($this->details->address2) ? ", " . $this->details->address2 : '';
+        $formatted_address .= ($this->details->city) ? ", " . $this->details->city : '';
+        $formatted_address .= ($this->details->postcode) ? ', ' . $this->details->postcode : '';
+        return $formatted_address;
+    }
+
+    public function getStartVolunteeringDateAttribute(): string
+    {
+        return isset($this->details) && isset($this->details->start_volunteering_date) ?
+            $this->details->start_volunteering_date->format('d-M-Y') :
+            trans('global.not_available');
+    }
+
+    public function getGenderAttribute(): string
+    {
+        return trans('cruds.user_details.' . $this->details->gender) ?? __('global.not_available');
+    }
+
 }
