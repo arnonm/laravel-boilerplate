@@ -32,5 +32,6 @@ class LocaleServiceProvider extends ServiceProvider
         Blade::if('langrtl', function () {
             return session()->has('lang-rtl');
         });
+
     }
 }
