@@ -59,6 +59,11 @@ trait UserMethod
         return config('boilerplate.access.user.change_email');
     }
 
+    public function canChangeAvatar(): bool
+    {
+        return config('boilerplate.access.user.change_avatar');
+    }
+
     /**
      * @return bool
      */
