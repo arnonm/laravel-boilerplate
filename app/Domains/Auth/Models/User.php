@@ -102,12 +102,15 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     protected $with = [
         'permissions',
         'roles',
+        'details',
     ];
+
+//    protected $dateFormat = "d-m-Y";
 
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function sendPasswordResetNotification($token): void
@@ -144,4 +147,5 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     {
         return ! $this->isMasterAdmin();
     }
+
 }
