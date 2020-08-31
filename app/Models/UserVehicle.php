@@ -10,6 +10,7 @@ class UserVehicle extends Model
         'offroad' => 'boolean',
         'towing' => 'boolean',
     ];
+    protected $fillable = ['license_plate', 'manufacturer', 'manufacturing_date', 'offroad', 'towing', 'user_id'];
 
     public function user()
     {

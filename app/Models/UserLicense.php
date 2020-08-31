@@ -23,7 +23,14 @@ class UserLicense extends Model
 
     public function getExpiresAttribute()
     {
-        return $this->expiration_date->format('d-m-Y');
+        return (($this->expiration_date == null) ? trans('global.not_available') : $this->expiration_date->format('d-m-Y'));
+    }
+
+    public function getLicenseTypeAttribute()
+    {
+        return ($this->type == trans('global.not_available') ? trans('global.not_available') :
+            trans('cruds.user_license.type.' . $this->type));
+
     }
 
     public function getLicenseTypesAttribute()

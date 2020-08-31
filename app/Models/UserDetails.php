@@ -29,7 +29,7 @@ class UserDetails extends Model implements HasMedia
 
     public function user()
     {
-        return $this->hasOne('App\Models\User');
+        return $this->belongsTo('App\Domains\Auth\Models\User');
     }
 
     public function registerAllMediaConversions(Media $media = null)
@@ -42,9 +42,16 @@ class UserDetails extends Model implements HasMedia
     /**
      * @return mixed
      */
-    public function getAvatarAttribute()
+    private function getAvatarIcon()
     {
-        return $this->getFirstMediaUrl('avatars', 'thumb');
+        $firstURl = $this->getFirstMediaUrl('avatars', 'thumb');
+        return ($firstURl != "") ? $firstURl : null;
+    }
+
+    public function getAvatarIconAttribute($size = null)
+    {
+        return ($this->getAvatarIcon() ??
+            'https://gravatar.com/avatar/' . md5(strtolower(trim($this->user->email))) . '?s=' . config('boilerplate.avatar.size', $size) . '&d=mp');
     }
 
     public function addReplaceAvatar($replace = true)
