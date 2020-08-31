@@ -38,12 +38,12 @@
 
 @if(session()->get('resent'))
     <x-utils.alert type="success" class="header-message">
-        @lang('A fresh verification link has been sent to your email address.')
+        @lang('global.auth.A fresh verification link has been sent to your email address.')
     </x-utils.alert>
 @endif
 
 @if(session()->get('verified'))
     <x-utils.alert type="success" class="header-message">
-        @lang('Thank you for verifying your e-mail address.')
+        @lang('global.auth.Thank you for verifying your e-mail address.')
     </x-utils.alert>
 @endif
