@@ -102,7 +102,7 @@ class LoginController extends Controller
         if (! $user->isActive()) {
             auth()->logout();
 
-            return redirect()->route('frontend.auth.login')->withFlashDanger(__('Your account has been deactivated.'));
+            return redirect()->route('frontend.auth.login')->withFlashDanger(__('global.auth.Your account has been deactivated.'));
         }
 
         event(new UserLoggedIn($user));

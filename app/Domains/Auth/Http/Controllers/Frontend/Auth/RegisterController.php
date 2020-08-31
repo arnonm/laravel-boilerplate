@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'terms' => ['required', 'in:1'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
         ], [
-            'terms.required' => __('You must accept the Terms & Conditions.'),
+            'terms.required' => __('global.auth.You must accept the Terms & Conditions.'),
             'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ]);
     }
