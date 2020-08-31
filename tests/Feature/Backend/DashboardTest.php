@@ -28,7 +28,7 @@ class DashboardTest extends TestCase
 
         $response->assertRedirect('/');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
