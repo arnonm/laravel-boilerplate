@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <x-frontend.edit-button href="/propile/vehicle/edit"/>
+    <x-frontend.add-button href=" {{ route('frontend.user.profile.vehicle.add') }} "/>
     <table class="table table-striped table-hover table-bordered mb-0">
 
         <tr>
@@ -21,8 +21,11 @@
             <th>
                 @lang('cruds.user_vehicle.fields.towing')
             </th>
+            <th>
+                @lang('global.actions.Actions')
+            </th>
         </tr>
-        @foreach ($logged_in_user->vehicles as $vehicle)
+        @forelse ($logged_in_user->vehicles as $vehicle)
 
             <tr>
                 <td>
@@ -38,15 +41,23 @@
                     {{ $vehicle->manufacturing_date }}
                 </td>
                 <td>
-                    {{ $vehicle->offroad }}
+                    {{ $vehicle->offroad  ? trans('global.Yes') : trans('global.No') }}
                 </td>
                 <td>
-                    {{ $vehicle->towing }}
+                    {{ $vehicle->towing  ? trans('global.Yes') : trans('global.No') }}
+                </td>
+                <td>
+                    <x-utils.edit-button href="{{ route('frontend.user.profile.vehicle.edit', $vehicle->id) }}"/>
+                    <x-utils.delete-button href=" {{route('frontend.user.profile.vehicle.delete', [$vehicle->id])}}"/>
                 </td>
 
             </tr>
+        @empty
+            <tr>
+                <td colspan="6">@lang('cruds.user_vehicle.no_vehicle')</td>
+            </tr>
 
-        @endforeach
+        @endforelse
 
     </table>
 </div>

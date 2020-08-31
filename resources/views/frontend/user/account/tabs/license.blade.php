@@ -16,7 +16,7 @@
                 @lang('cruds.user_license.fields.expiration_date')
             </th>
             <td>
-                {{ $logged_in_user->license->expiration_date->format('d-m-Y') }}
+                {{ $logged_in_user->license->expires }}
 
             </td>
         </tr>
@@ -25,7 +25,7 @@
                 @lang('cruds.user_license.fields.type')
             </th>
             <td>
-                {{ __('cruds.user_license.type.'.$logged_in_user->license->type) }}
+                {{ $logged_in_user->license->license_type }}
 
             </td>
         </tr>

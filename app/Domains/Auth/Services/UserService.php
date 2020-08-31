@@ -66,7 +66,7 @@ class UserService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem creating your account.'));
+            throw new GeneralException(__('global.auth.There was a problem creating your account.'));
         }
 
         DB::commit();
@@ -99,7 +99,7 @@ class UserService extends BaseService
             } catch (Exception $e) {
                 DB::rollBack();
 
-                throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                throw new GeneralException(__('global.auth.There was a problem connecting to :provider', ['provider' => $provider]));
             }
 
             DB::commit();
@@ -137,7 +137,7 @@ class UserService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem creating this user. Please try again.'));
+            throw new GeneralException(__('global.auth.There was a problem creating this user. Please try again.'));
         }
 
         event(new UserCreated($user));
@@ -181,7 +181,7 @@ class UserService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem updating this user. Please try again.'));
+            throw new GeneralException(__('global.auth.There was a problem updating this user. Please try again.'));
         }
 
         event(new UserUpdated($user));
@@ -235,7 +235,7 @@ class UserService extends BaseService
         if (isset($data['current_password'])) {
             throw_if(
                 ! Hash::check($data['current_password'], $user->password),
-                new GeneralException(__('That is not your old password.'))
+                new GeneralException(__('global.auth.That is not your old password.'))
             );
         }
 
@@ -259,11 +259,11 @@ class UserService extends BaseService
     public function mark(User $user, $status): User
     {
         if ($status === 0 && auth()->id() === $user->id) {
-            throw new GeneralException(__('You can not do that to yourself.'));
+            throw new GeneralException(__('global.auth.You can not do that to yourself.'));
         }
 
         if ($status === 0 && $user->isMasterAdmin()) {
-            throw new GeneralException(__('You can not deactivate the administrator account.'));
+            throw new GeneralException(__('global.auth.You can not deactivate the administrator account.'));
         }
 
         $user->active = $status;
@@ -274,7 +274,7 @@ class UserService extends BaseService
             return $user;
         }
 
-        throw new GeneralException(__('There was a problem updating this user. Please try again.'));
+        throw new GeneralException(__('global.auth.There was a problem updating this user. Please try again.'));
     }
 
     /**
@@ -286,7 +286,7 @@ class UserService extends BaseService
     public function delete(User $user): User
     {
         if ($user->id === auth()->id()) {
-            throw new GeneralException(__('You can not delete yourself.'));
+            throw new GeneralException(__('global.auth.You can not delete yourself.'));
         }
 
         if ($this->deleteById($user->id)) {
@@ -295,7 +295,7 @@ class UserService extends BaseService
             return $user;
         }
 
-        throw new GeneralException('There was a problem deleting this user. Please try again.');
+        throw new GeneralException('global.auth.There was a problem deleting this user. Please try again.');
     }
 
     /**
@@ -312,7 +312,7 @@ class UserService extends BaseService
             return $user;
         }
 
-        throw new GeneralException(__('There was a problem restoring this user. Please try again.'));
+        throw new GeneralException(__('global.auth.There was a problem restoring this user. Please try again.'));
     }
 
     /**
@@ -329,7 +329,7 @@ class UserService extends BaseService
             return true;
         }
 
-        throw new GeneralException(__('There was a problem permanently deleting this user. Please try again.'));
+        throw new GeneralException(__('global.auth.There was a problem permanently deleting this user. Please try again.'));
     }
 
     /**

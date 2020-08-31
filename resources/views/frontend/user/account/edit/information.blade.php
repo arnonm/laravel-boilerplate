@@ -6,7 +6,11 @@
     <style>
         .btn-avatar {
             position: relative;
+            vertical-align: bottom;
             overflow: hidden;
+            height: 50%;
+            bottom: 0;
+            text-align: left;
         }
 
         .btn-avatar input[type=file] {
@@ -36,13 +40,13 @@
                     <x-frontend.card>
                         <div class="d-flex justify-content-between">
                             <x-slot name="header">
-                                @lang('global.Edit') @lang('cruds.user_details.contact_information')
+                                @lang('global.actions.Edit') @lang('cruds.user_details.contact_information')
                             </x-slot>
 
                             <x-slot name="headerActions">
                                 <x-utils.link class="card-header-action"
                                               :href="route('frontend.user.account','#contact')"
-                                              :text="__('global.Cancel')"/>
+                                              :text="__('global.actions.Cancel')"/>
                             </x-slot>
                         </div>
                         <x-slot name="body">
@@ -54,11 +58,11 @@
                                 <div class="form-group">
                                     <label for="avatar">@lang('cruds.user.fields.avatar')</label>
 
-                                    <div class="col-md-9 d-flex align-text-bottom">
-                                        <img src="{{ asset($logged_in_user->avatar) }}" class="user-profile-image"/>
-                                        <span class="btn btn-primary btn-avatar">
-                                            @lang('global.Browse')<input type="file" name="avatar" id="avatar">
-                                        </span>
+                                    <div class="col-md-9 d-flex align-text-bottom row">
+                                        <img src="{{ asset($logged_in_user->avatar) }}" class=""/>
+                                        <div class="btn btn-primary btn-avatar">
+                                            @lang('global.actions.Browse')<input type="file" name="avatar" id="avatar">
+                                        </div>
                                     </div>
                                 </div>
                             @endif
@@ -88,7 +92,7 @@
                         <x-slot name="footer">
                             <div class="col-md-12 text-right">
                                 <button class="btn btn-sm btn-primary float-right"
-                                        type="submit">@lang('global.Update')</button>
+                                        type="submit">@lang('global.actions.Update')</button>
                             </div>
                         </x-slot>
                     </x-frontend.card>

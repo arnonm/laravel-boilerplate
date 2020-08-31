@@ -48,10 +48,10 @@ class ResetPasswordNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject(__('Reset Password Notification'))
-            ->line(__('You are receiving this email because we received a password reset request for your account.'))
+            ->subject(__('global.mail.Reset Password Notification'))
+            ->line(__('global.mail.You are receiving this email because we received a password reset request for your account.'))
             ->action(__('Reset Password'), route('frontend.auth.password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()]))
-            ->line(__('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(__('If you did not request a password reset, no further action is required.'));
+            ->line(__('global.mail.This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')]))
+            ->line(__('global.mail.If you did not request a password reset, no further action is required.'));
     }
 }

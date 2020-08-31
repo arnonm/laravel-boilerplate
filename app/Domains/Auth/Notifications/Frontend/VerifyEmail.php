@@ -33,10 +33,10 @@ class VerifyEmail extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject(__('Verify E-mail Address'))
-            ->line(__('Please click the button below to verify your email address.'))
-            ->action(__('Verify E-mail Address'), $this->verificationUrl($notifiable))
-            ->line(__('If you did not create an account, no further action is required.'));
+            ->subject(__('global.mail.Verify E-mail Address'))
+            ->line(__('global.mail.Please click the button below to verify your email address.'))
+            ->action(__('global.mail.Verify E-mail Address'), $this->verificationUrl($notifiable))
+            ->line(__('global.mail.If you did not create an account, no further action is required.'));
     }
 
     /**

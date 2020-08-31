@@ -12,13 +12,13 @@
                     <x-frontend.card>
                         <div class="d-flex justify-content-between">
                             <x-slot name="header">
-                                @lang('global.Edit') @lang('cruds.user_uniform.title_singular')
+                                @lang('global.actions.Edit') @lang('cruds.user_uniform.title_singular')
                             </x-slot>
 
                             <x-slot name="headerActions">
                                 <x-utils.link class="card-header-action"
                                               :href="route('frontend.user.account','#uniform')"
-                                              :text="__('global.Cancel')"/>
+                                              :text="__('global.actions.Cancel')"/>
                             </x-slot>
                         </div>
                         <x-slot name="body">
@@ -41,10 +41,10 @@
                         <x-slot name="footer">
                             @if (session()->has('lang-rtl'))
                                 <x-form-submit
-                                    class="btn btn-sm btn-primary float-left">@lang('global.Update')</x-form-submit>
+                                    class="btn btn-sm btn-primary float-left">@lang('global.actions.Update')</x-form-submit>
                             @else
                                 <x-form-submit
-                                    class="btn btn-sm btn-primary float-right">@lang('global.Update')</x-form-submit>
+                                    class="btn btn-sm btn-primary float-right">@lang('global.actions.Update')</x-form-submit>
                             @endif
                         </x-slot>
                         {{--                    @include('backend.auth.includes.permissions')--}}

@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('global.AppName') ?? appName() }} | @yield('title')</title>
     <meta name="description" content="@yield('meta_description', appName())">
-    <meta name="author" content="@yield( trans('global.meta_author'))">
+    <meta name="author" content="@yield( __('global.meta_author')) )">
     @yield('meta')
 
     @stack('before-styles')
@@ -38,6 +38,7 @@
 <script src="{{ mix('js/frontend.js') }}"></script>
 @langrtl
 <!-- script src="{{ asset('js/rtl.js') }}" --></script>
+<
 <
 script >
 // console.log("running")

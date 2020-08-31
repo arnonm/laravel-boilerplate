@@ -90,7 +90,7 @@ class RoleService extends BaseService
     public function destroy(Role $role): bool
     {
         if ($role->users()->count()) {
-            throw new GeneralException(__('You can not delete a role with associated users.'));
+            throw new GeneralException(__('global.role.You can not delete a role with associated users.'));
         }
 
         if ($this->deleteById($role->id)) {
@@ -99,6 +99,6 @@ class RoleService extends BaseService
             return true;
         }
 
-        throw new GeneralException(__('There was a problem deleting the role.'));
+        throw new GeneralException(__('global.role.There was a problem deleting the role.'));
     }
 }

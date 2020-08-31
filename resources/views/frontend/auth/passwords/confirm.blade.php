@@ -8,7 +8,7 @@
             <div class="col-md-8">
                 <x-frontend.card>
                     <x-slot name="header">
-                        @lang('global.password_reset.Please confirm your password before continuing')
+                        @lang('global.auth.Please confirm your password before continuing')
                     </x-slot>
 
                     <x-slot name="body">
