@@ -1,5 +1,5 @@
 <template>
-    <span>Laravel Boilerplate</span>
+    <span>Example Vue Component</span>
 </template>
 
 <script>
