@@ -45,7 +45,7 @@
                                     aria-selected="true"/>
 
                                 <x-utils.link
-                                    :text="__('cruds.emergency_info.title')"
+                                    :text="__('cruds.user_emergency.title')"
                                     class="nav-link"
                                     id="emergency-tab"
                                     data-toggle="pill"

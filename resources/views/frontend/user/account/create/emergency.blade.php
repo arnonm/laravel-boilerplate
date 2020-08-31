@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', __('cruds.action.edit').__('cruds.user_emergency.title_singular'))
+@section('title', __('cruds.actions.Add').__('cruds.user_emergency.title_singular'))
 
 @section('content')
 
@@ -8,11 +8,11 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
 
-                <x-form method="PATCH" action="{{route('frontend.user.profile.emergency.update', [$contact->id])}}">
+                <x-form method="POST" action="{{ route('frontend.user.profile.emergency.store') }}">
                     <x-frontend.card>
                         <div class="d-flex justify-content-between">
                             <x-slot name="header">
-                                @lang('global.actions.Edit') @lang('cruds.user_emergency.title_singular')
+                                @lang('global.actions.Add') @lang('cruds.user_emergency.title_singular')
                             </x-slot>
 
                             <x-slot name="headerActions">
@@ -22,16 +22,15 @@
                             </x-slot>
                         </div>
                         <x-slot name="body">
-                            @bind($contact)
-                            <x-form-input name="id" type="hidden"/>
+                            <x-form-input name="id" :bind="$logged_in_user" type="hidden"/>
+
                             <x-form-input name="name" required
                                           label="{{trans('cruds.user_emergency.fields.name')}}"/>
-                            <x-form-input name="relation"
+                            <x-form-input name="relation" required
                                           label="{{trans('cruds.user_emergency.fields.relation')}}"/>
                             <x-form-input name="national_id"
                                           label="{{trans('cruds.user_emergency.fields.national_id')}}"/>
                             <x-form-input name="phone" label="{{trans('cruds.user_emergency.fields.phone')}}"/>
-                            @endbind
                         </x-slot>
                         <x-slot name="footer">
                             @if (session()->has('lang-rtl'))
@@ -46,8 +45,6 @@
 
                     </x-frontend.card>
                 </x-form>
-                <hr>
-
             </div>
         </div>
 

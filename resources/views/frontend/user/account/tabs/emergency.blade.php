@@ -1,26 +1,29 @@
 <div class="table-responsive">
-    <x-frontend.edit-button href="/profile/emergency/edit"/>
+    <x-frontend.add-button href=" {{ route('frontend.user.profile.emergency.add') }} "/>
 
     <table class="table table-striped table-hover table-bordered mb-0">
 
         <tr>
             <th>
-                @lang('cruds.emergency_info.fields.id')
+                @lang('cruds.user_emergency.fields.id')
             </th>
             <th>
-                @lang('cruds.emergency_info.fields.name')
+                @lang('cruds.user_emergency.fields.name')
             </th>
             <th>
-                @lang('cruds.emergency_info.fields.relation')
+                @lang('cruds.user_emergency.fields.relation')
             </th>
             <th>
-                @lang('cruds.emergency_info.fields.national_id')
+                @lang('cruds.user_emergency.fields.national_id')
             </th>
             <th>
-                @lang('cruds.emergency_info.fields.phone')
+                @lang('cruds.user_emergency.fields.phone')
+            </th>
+            <th>
+                @lang('global.actions.Actions')
             </th>
         </tr>
-        @foreach ($logged_in_user->contacts as $contact)
+        @forelse ($logged_in_user->contacts as $contact)
 
             <tr>
                 <td>
@@ -38,10 +41,17 @@
                 <td>
                     {{ $contact->phone }}
                 </td>
+                <td>
+                    <x-utils.edit-button href="{{ route('frontend.user.profile.emergency.edit', $contact->id) }}"/>
+                    <x-utils.delete-button href=" {{route('frontend.user.profile.emergency.delete', [$contact->id])}}"/>
 
+                </td>
             </tr>
-
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="6">@lang('cruds.user_emergency.no_contacts')</td>
+            </tr>
+        @endforelse
 
     </table>
 </div>
