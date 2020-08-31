@@ -4,4 +4,4 @@
     :href="$href"
     class="btn btn-primary btn-sm"
     icon="fas fa-pencil-alt"
-    :text="__('global.Edit')" permission="{{ $permission }}"/>
+    :text="__('global.actions.Edit')" permission="{{ $permission }}"/>
