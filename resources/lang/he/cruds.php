@@ -321,8 +321,9 @@ return [
     'user_vehicle' => [
         'title' => "רכבי מתנדב",
         'title_singular' => "רכב מתנדב",
+        'no_vehicle' => "אין רכבים רשומים במערכת.",
         'fields' => [
-            'id' => 'ID',
+            'id' => 'מס סידורי',
             'id_helper' => '',
             'license_plate' => 'מספר רישוי',
             'manufacturer' => 'יצרן',
@@ -335,7 +336,7 @@ return [
         'title' => 'מדי מתנדב',
         'title_singular' => 'מדי מתנדב',
         'fields' => [
-            'id' => 'ID',
+            'id' => 'מס סידורי',
             'id_helper' => '',
             'shirt_size' => 'מידת חולצה',
             'belt_size' => 'מידת חגורה',
@@ -344,14 +345,15 @@ return [
             'sweatshirt_size' => 'מידת סווטסרט',
         ],
     ],
-    'emergency_info' => [
+    'user_emergency' => [
         'title' => 'אנשי קשר',
         'title_singular' => 'איש קשר',
+        'no_contacts' => "אין אנשי קשר רשומים במערכת.",
         'fields' => [
             'id' => 'מס סידור',
             'id_helper' => '',
             'name' => 'שם',
-            'relation' => 'קירהב',
+            'relation' => 'קירבה',
             'national_id' => 'ת״ז',
             'phone' => 'טלפון',
         ],

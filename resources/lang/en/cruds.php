@@ -136,13 +136,14 @@ return [
     ],
 
     'user_vehicle' => [
-        'title' => "Users Vehicles",
-        'title_singular' => "Users Vehicle",
+        'title' => "User's Vehicles",
+        'title_singular' => "Users' Vehicle",
+        'no_vehicle' => "No vehicles are registered. Press the Add button to add a vehicle.",
         'fields' => [
             'id' => 'ID',
             'id_helper' => '',
             'license_plate' => 'Plate Number',
-            'manufacturer' => 'Manu',
+            'manufacturer' => 'Manufacturer',
             'manufacturing_date' => 'Year',
             'offroad' => '4x4',
             'towing' => 'Towing Hook',
@@ -161,9 +162,10 @@ return [
             'sweatshirt_size' => 'Sweatshirt Size',
         ],
     ],
-    'emergency_info' => [
+    'user_emergency' => [
         'title' => 'Emergency Contacts',
         'title_singular' => 'Emergency Contact',
+        'no_contacts' => "No contacts listed. Please the Add button to add new contacts",
         'fields' => [
             'id' => 'ID',
             'id_helper' => '',
