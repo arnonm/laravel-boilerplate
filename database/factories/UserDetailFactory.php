@@ -19,7 +19,7 @@ use Faker\Generator as Faker;
 $factory->define(UserDetails::class, function (Faker $faker) {
     return [
         'member_id' => $faker->unique()->randomNumber(4),
-        'gender' => $faker->randomElement(array('Maple', 'Female')),
+        'gender' => $faker->randomElement(array('Male', 'Female')),
         'national_id' => $faker->unique()->randomNumber(9),
         'cell_phone' => $faker->phoneNumber,
         'address' => $faker->streetAddress,

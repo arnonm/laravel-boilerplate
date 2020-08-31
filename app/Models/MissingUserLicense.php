@@ -15,6 +15,7 @@ class MissingUserLicense extends UserLicense
             'year' => trans('global.not_available'),
             'type' => trans('global.not_available'),
             'number' => trans('global.not_available'),
+//            'expiration_date' => trans('global.not_available'),
         ];
     }
 }

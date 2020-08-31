@@ -28,6 +28,8 @@ class UserSeeder extends Seeder
         ]);
 
         if (app()->environment(['local', 'testing'])) {
+            $this->SeedUser(1);
+
             $user = User::create([
                 'type' => User::TYPE_USER,
                 'name' => 'Test User',

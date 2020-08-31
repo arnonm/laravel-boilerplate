@@ -3,6 +3,7 @@
 namespace App\Domains\Auth\Models\Traits\Relationship;
 
 use App\Domains\Auth\Models\PasswordHistory;
+use App\Models\MissingUserDetails;
 use App\Models\MissingUserLicense;
 use App\Models\MissingUserUniform;
 use App\Models\UserContact;
@@ -26,7 +27,8 @@ trait UserRelationship
 
     public function details()
     {
-        return $this->hasOne(UserDetails::class);
+        return $this->hasOne(UserDetails::class)
+            ->withDefault(MissingUserDetails::make(['id' => $this->id])->toArray());
     }
 
     public function license()

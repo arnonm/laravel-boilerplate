@@ -76,3 +76,4 @@ $factory->state(User::class, 'deleted', function () {
         'deleted_at' => now(),
     ];
 });
+
