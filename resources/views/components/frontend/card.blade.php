@@ -1,5 +1,5 @@
-<div class="card">
-    @if (isset($header))
+    <div class="card">
+        @if (isset($header))
         <div class="card-header">
             {{ $header }}
 
