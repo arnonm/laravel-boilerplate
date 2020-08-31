@@ -28,7 +28,7 @@ trait UserAttribute
      */
     public function getAvatarAttribute()
     {
-        return ($this->details->avatar);
+        return (optional($this->details)->avatar_icon);
     }
 
     /**
@@ -102,15 +102,20 @@ trait UserAttribute
         $formatted_address .= ($this->details->address2) ? ", " . $this->details->address2 : '';
         $formatted_address .= ($this->details->city) ? ", " . $this->details->city : '';
         $formatted_address .= ($this->details->postcode) ? ', ' . $this->details->postcode : '';
-        return $formatted_address;
+        return ($this->details->address == trans('global.not_available') ?
+            trans('global.not_available') : $formatted_address);
 
     }
 
     public function getFormattedAddressAttribute(): string
     {
-        if ( !isset($this->details) || !isset($this->details->address)) {
+        if ( !isset($this->details)) {
             return trans('global.not_available');
         }
+        if ($this->details->address == trans('global.not_available')) {
+            return trans('global.not_available');
+        }
+
         $formatted_address = $this->details->address;
         $formatted_address .= ($this->details->address2) ? ", " . $this->details->address2 : '';
         $formatted_address .= ($this->details->city) ? ", " . $this->details->city : '';
@@ -127,7 +132,13 @@ trait UserAttribute
 
     public function getGenderAttribute(): string
     {
-        return trans('cruds.user_details.' . $this->details->gender) ?? __('global.not_available');
+        if ( !isset($this->details)) {
+            return trans('global.not_available');
+        }
+        if ($this->details->gender == trans('global.not_available')) {
+            return trans('global.not_available');
+        }
+        return trans('cruds.user_details.' . $this->details->gender);
     }
 
 }
