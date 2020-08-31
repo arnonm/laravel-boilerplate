@@ -41,6 +41,6 @@ class DeleteRoleRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('You can not delete the Administrator role.'));
+        throw new AuthorizationException(__('global.admin.You can not delete the Administrator role.'));
     }
 }

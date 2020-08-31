@@ -41,6 +41,6 @@ class ClearUserSessionRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('You can not clear your own session.'));
+        throw new AuthorizationException(__('global.auth.You can not clear your own session.'));
     }
 }

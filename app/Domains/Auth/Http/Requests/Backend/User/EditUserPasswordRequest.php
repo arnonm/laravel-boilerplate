@@ -41,6 +41,6 @@ class EditUserPasswordRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('Only the administrator can change their password.'));
+        throw new AuthorizationException(__('global.admin.Only the administrator can change their password.'));
     }
 }

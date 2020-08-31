@@ -62,6 +62,6 @@ class UpdateUserRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('Only the administrator can update this user.'));
+        throw new AuthorizationException(__('global.access.Only the administrator can update this user.'));
     }
 }
