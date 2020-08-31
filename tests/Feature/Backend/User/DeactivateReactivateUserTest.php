@@ -20,7 +20,7 @@ class DeactivateReactivateUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['admin.access.user.reactivate']);
+        $user->syncPermissions(['admin.auth.user.reactivate']);
 
         $this->get('/admin/auth/user/deactivated')->assertOk();
 
@@ -28,7 +28,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $response = $this->get('/admin/auth/user/deactivated');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.You do not have access to do that.'));
     }
 
     /** @test */
@@ -71,7 +71,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $response = $this->patch('/admin/auth/user/'.$deactivatedUser->id.'/mark/1');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
 
         $this->assertDatabaseHas('users', [
             'id' => $deactivatedUser->id,
@@ -119,7 +119,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $response = $this->patch('/admin/auth/user/'.$activeUser->id.'/mark/0');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
 
         $this->assertDatabaseHas('users', [
             'id' => $activeUser->id,
@@ -136,7 +136,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $response = $this->patch('/admin/auth/user/'.$user->id.'/mark/0');
 
-        $response->assertSessionHas('flash_danger', __('You can not do that to yourself.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.You can not do that to yourself.'));
     }
 
     /** @test */
@@ -148,6 +148,6 @@ class DeactivateReactivateUserTest extends TestCase
 
         $response = $this->patch('/admin/auth/user/'.$this->getMasterAdmin()->id.'/mark/0');
 
-        $response->assertSessionHas('flash_danger', __('You can not deactivate the administrator account.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.You can not deactivate the administrator account.'));
     }
 }

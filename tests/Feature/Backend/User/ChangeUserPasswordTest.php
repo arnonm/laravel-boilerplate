@@ -3,6 +3,7 @@
 namespace Tests\Feature\Backend\User;
 
 use App\Domains\Auth\Models\User;
+use App\Models\UserDetails;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -22,14 +23,14 @@ class ChangeUserPasswordTest extends TestCase
         $user->syncPermissions(['admin.access.user.change-password']);
 
         $newUser = factory(User::class)->create();
-
-        $this->get('/admin/auth/user/'.$newUser->id.'/password/change')->assertOk();
+        factory(UserDetails::class)->create(['user_id' => $user->id]);
+        $this->get('/admin/auth/user/' . $newUser->id . '/password/change')->assertOk();
 
         $user->syncPermissions([]);
 
         $response = $this->get('/admin/auth/user/'.$newUser->id.'/password/change');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
@@ -40,13 +41,14 @@ class ChangeUserPasswordTest extends TestCase
         $user->syncPermissions(['admin.access.user.change-password']);
 
         $newUser = factory(User::class)->create();
+        factory(UserDetails::class)->create(['user_id' => $user->id]);
 
         $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
+        $response->assertSessionHas('flash_success', __("global.user.The user's password was successfully updated."));
 
         $user->syncPermissions([]);
 
@@ -55,7 +57,7 @@ class ChangeUserPasswordTest extends TestCase
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
@@ -99,7 +101,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $response = $this->get('/admin/auth/user/'.$admin->id.'/password/change');
 
-        $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
+        $response->assertSessionHas('flash_danger', __('global.admin.Only the administrator can change their password.'));
 
         $this->logout();
 
@@ -122,7 +124,7 @@ class ChangeUserPasswordTest extends TestCase
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
+        $response->assertSessionHas('flash_danger', trans('global.admin.Only the administrator can change their password.'));
 
         $this->logout();
 
@@ -133,7 +135,7 @@ class ChangeUserPasswordTest extends TestCase
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
+        $response->assertSessionHas('flash_success', __("global.user.The user's password was successfully updated."));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $admin->fresh()->password));
     }
 
@@ -151,7 +153,7 @@ class ChangeUserPasswordTest extends TestCase
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
+        $response->assertSessionHas('flash_success', __("global.user.The user's password was successfully updated."));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $user->fresh()->password));
     }
 
@@ -176,7 +178,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertSame($errors->get('password')[0], __('You can not set a password that you have previously used within the last 3 times.'));
+        $this->assertSame($errors->get('password')[0], __('global.auth.You can not set a password that you have previously used within the last 3 times.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX_02', $user->fresh()->password));
     }
 }

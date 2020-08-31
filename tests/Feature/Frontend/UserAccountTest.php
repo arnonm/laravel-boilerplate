@@ -3,6 +3,7 @@
 namespace Tests\Feature\Frontend;
 
 use App\Domains\Auth\Models\User;
+use App\Models\UserDetails;
 use Tests\TestCase;
 
 /**
@@ -15,7 +16,9 @@ class UserAccountTest extends TestCase
     {
         $this->get('/account')->assertRedirect('/login');
 
-        $this->actingAs(factory(User::class)->create());
+        $user = factory(User::class)->create();
+        factory(UserDetails::class)->create(['user_id' => $user->id]);
+        $this->actingAs($user);
 
         $this->get('/account')->assertOk();
     }

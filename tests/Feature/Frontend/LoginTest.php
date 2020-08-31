@@ -62,7 +62,7 @@ class LoginTest extends TestCase
             'password' => 'secret',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('Your account has been deactivated.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.Your account has been deactivated.'));
         $this->assertFalse($this->isAuthenticated());
     }
 
@@ -77,7 +77,7 @@ class LoginTest extends TestCase
             'password' => '9s8gy8s9diguh4iev',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('These credentials do not match our records.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.These credentials do not match our records.'));
         $this->assertFalse($this->isAuthenticated());
     }
 

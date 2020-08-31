@@ -28,6 +28,6 @@ class ListRoleTest extends TestCase
 
         $response = $this->get('/admin/auth/role');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 }

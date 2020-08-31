@@ -87,7 +87,7 @@ class CreateUserTest extends TestCase
             'model_id' => User::whereEmail('john@example.com')->first()->id,
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('The user was successfully created.')]);
+        $response->assertSessionHas(['flash_success' => __('global.user.The user was successfully created.')]);
 
         Event::assertDispatched(UserCreated::class);
     }
@@ -111,7 +111,7 @@ class CreateUserTest extends TestCase
             ],
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('The user was successfully created.')]);
+        $response->assertSessionHas(['flash_success' => trans('global.user.The user was successfully created.')]);
 
         $user = User::where('email', 'john@example.com')->first();
 
@@ -125,6 +125,6 @@ class CreateUserTest extends TestCase
 
         $response = $this->get('/admin/auth/user/create');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 }

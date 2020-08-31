@@ -5,6 +5,7 @@ namespace Tests\Feature\Backend\User;
 use App\Domains\Auth\Events\User\UserDeleted;
 use App\Domains\Auth\Events\User\UserDestroyed;
 use App\Domains\Auth\Models\User;
+use App\Models\UserDetails;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
@@ -31,7 +32,7 @@ class DeleteUserTest extends TestCase
 
         $response = $this->get('/admin/auth/user/deleted');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
@@ -96,6 +97,7 @@ class DeleteUserTest extends TestCase
         $this->loginAsAdmin();
 
         $user = factory(User::class)->state('deleted')->create();
+        factory(UserDetails::class)->create(['user_id' => $user->id]);
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
@@ -125,12 +127,14 @@ class DeleteUserTest extends TestCase
     public function a_user_can_not_delete_themselves()
     {
         $user = factory(User::class)->state('admin')->create();
+        factory(UserDetails::class)->create(['user_id' => $user->id]);
+
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 
-        $response = $this->delete('/admin/auth/user/'.$user->id);
+        $response = $this->delete('/admin/auth/user/' . $user->id);
 
-        $response->assertSessionHas('flash_danger', __('You can not delete yourself.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.You can not delete yourself.'));
 
         $this->assertDatabaseHas('users', ['id' => $user->id, 'deleted_at' => null]);
     }
@@ -144,6 +148,6 @@ class DeleteUserTest extends TestCase
 
         $response = $this->delete("/admin/auth/user/{$user->id}");
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 }

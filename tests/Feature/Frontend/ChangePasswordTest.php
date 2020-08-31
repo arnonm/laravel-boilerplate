@@ -34,7 +34,7 @@ class ChangePasswordTest extends TestCase
             ]);
 
         $response->assertRedirect('/account?#password');
-        $response->assertSessionHas('flash_success', __('Password successfully updated.'));
+        $response->assertSessionHas('flash_success', trans('global.user.Password successfully updated.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $user->fresh()->password));
     }
 
@@ -52,7 +52,7 @@ class ChangePasswordTest extends TestCase
                 'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX_02',
             ]);
 
-        $response->assertSessionHas('flash_success', __('Password successfully updated.'));
+        $response->assertSessionHas('flash_success', trans('global.user.Password successfully updated.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX_02', $user->fresh()->password));
     }
 
@@ -83,7 +83,7 @@ class ChangePasswordTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertSame($errors->get('password')[0], __('You can not set a password that you have previously used within the last 3 times.'));
+        $this->assertSame($errors->get('password')[0], __('global.auth.You can not set a password that you have previously used within the last 3 times.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX_02', $user->fresh()->password));
     }
 
@@ -119,7 +119,7 @@ class ChangePasswordTest extends TestCase
                 'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
             ]);
 
-        $response->assertSessionHas('flash_success', __('Password successfully updated.'));
+        $response->assertSessionHas('flash_success', __('global.user.Password successfully updated.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $user->fresh()->password));
     }
 }

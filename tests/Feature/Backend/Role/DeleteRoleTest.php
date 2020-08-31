@@ -43,7 +43,7 @@ class DeleteRoleTest extends TestCase
 
         $response = $this->delete('/admin/auth/role/'.$role->id);
 
-        $response->assertSessionHas(['flash_danger' => __('You can not delete the Administrator role.')]);
+        $response->assertSessionHas(['flash_danger' => __('global.admin.You can not delete the Administrator role.')]);
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
     }
@@ -59,7 +59,7 @@ class DeleteRoleTest extends TestCase
 
         $response = $this->delete('/admin/auth/role/'.$role->id);
 
-        $response->assertSessionHas(['flash_danger' => __('You can not delete a role with associated users.')]);
+        $response->assertSessionHas(['flash_danger' => __('global.role.You can not delete a role with associated users.')]);
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
     }
@@ -73,7 +73,7 @@ class DeleteRoleTest extends TestCase
 
         $response = $this->delete('/admin/auth/role/'.$role->id);
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
     }

@@ -3,6 +3,7 @@
 namespace Tests\Feature\Frontend;
 
 use App\Domains\Auth\Models\User;
+use App\Models\UserDetails;
 use Tests\TestCase;
 
 /**
@@ -15,8 +16,11 @@ class DashboardTest extends TestCase
     {
         $this->get('/dashboard')->assertRedirect('/login');
 
-        $this->actingAs(factory(User::class)->state('user')->create());
-
+        $user = factory(User::class)->state('user')->create();
+        $userdetails = factory(UserDetails::class)->create([
+            'user_id' => $user->id,
+        ]);
+        $this->actingAs($user);
         $this->get('/dashboard')->assertOk();
     }
 }

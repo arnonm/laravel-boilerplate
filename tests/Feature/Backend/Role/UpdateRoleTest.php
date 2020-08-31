@@ -108,7 +108,7 @@ class UpdateRoleTest extends TestCase
 
         $response = $this->get("/admin/auth/role/{$role->id}/edit");
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
@@ -122,7 +122,7 @@ class UpdateRoleTest extends TestCase
             'name' => 'new name',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), [
             'id' => $role->id,

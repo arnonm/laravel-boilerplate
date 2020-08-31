@@ -3,6 +3,7 @@
 namespace Tests\Feature\Backend\User;
 
 use App\Domains\Auth\Models\User;
+use App\Models\UserDetails;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -26,7 +27,7 @@ class ListUserTest extends TestCase
 
         $response = $this->get('/admin/auth/user');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
@@ -37,6 +38,7 @@ class ListUserTest extends TestCase
         $user->syncPermissions(['admin.access.user.list']);
 
         $newUser = factory(User::class)->create();
+        factory(UserDetails::class)->create(['user_id' => $user->id]);
 
         $this->get('/admin/auth/user/'.$newUser->id)->assertOk();
 
@@ -44,6 +46,6 @@ class ListUserTest extends TestCase
 
         $response = $this->get('/admin/auth/user/'.$newUser->id);
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 }

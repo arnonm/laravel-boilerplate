@@ -30,7 +30,7 @@ class ClearSessionTest extends TestCase
 
         $response = $this->post('/admin/auth/user/'.$newUser->id.'/clear-session');
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */
@@ -42,6 +42,6 @@ class ClearSessionTest extends TestCase
 
         $response = $this->post('/admin/auth/user/'.$user->id.'/clear-session');
 
-        $response->assertSessionHas('flash_danger', __('You can not clear your own session.'));
+        $response->assertSessionHas('flash_danger', __('global.auth.You can not clear your own session.'));
     }
 }

@@ -85,7 +85,7 @@ class UpdateUserTest extends TestCase
 
         $response = $this->get("/admin/auth/user/{$admin->id}/edit");
 
-        $response->assertSessionHas('flash_danger', __('Only the administrator can update this user.'));
+        $response->assertSessionHas('flash_danger', __('global.access.Only the administrator can update this user.'));
     }
 
     /** @test */
@@ -125,7 +125,7 @@ class UpdateUserTest extends TestCase
             'email' => 'changed@example.com',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('Only the administrator can update this user.'));
+        $response->assertSessionHas('flash_danger', __('global.access.Only the administrator can update this user.'));
 
         $this->assertDatabaseMissing('users', [
             'id' => $admin->id,
@@ -172,7 +172,7 @@ class UpdateUserTest extends TestCase
             'name' => 'Jane Doe',
         ]);
 
-        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
