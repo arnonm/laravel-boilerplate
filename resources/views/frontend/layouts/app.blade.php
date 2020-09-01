@@ -36,15 +36,7 @@
 <script src="{{ mix('js/manifest.js') }}"></script>
 <script src="{{ mix('js/vendor.js') }}"></script>
 <script src="{{ mix('js/frontend.js') }}"></script>
-@langrtl
-<!-- script src="{{ asset('js/rtl.js') }}" --></script>
-<
-<
-script >
-// console.log("running")
-// layout.setDirection('rtl')
-</script>
-@endlangrtl
+
 <livewire:scripts/>
 @stack('after-scripts')
 </body>

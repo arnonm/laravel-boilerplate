@@ -57,7 +57,7 @@ Route::group(['as' => 'auth.'], function () {
                             ->name('show')
                             ->breadcrumbs(function (Trail $trail) {
                                 $trail->parent('frontend.user.account')
-                                    ->push(__('Two Factor Recovery Codes'), route('frontend.auth.account.2fa.show'));
+                                    ->push(__('global.2fa.Two Factor Recovery Codes'), route('frontend.auth.account.2fa.show'));
                             });
 
                         Route::patch('recovery/generate', [TwoFactorAuthenticationController::class, 'update'])->name('update');
@@ -66,7 +66,7 @@ Route::group(['as' => 'auth.'], function () {
                             ->name('disable')
                             ->breadcrumbs(function (Trail $trail) {
                                 $trail->parent('frontend.user.account')
-                                    ->push(__('Disable Two Factor Authentication'), route('frontend.auth.account.2fa.disable'));
+                                    ->push(__('global.2fa.Disable Two Factor Authentication'), route('frontend.auth.account.2fa.disable'));
                             });
 
                         Route::delete('/', [DisableTwoFactorAuthenticationController::class, 'destroy'])->name('destroy');

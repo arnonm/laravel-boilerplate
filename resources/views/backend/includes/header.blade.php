@@ -34,17 +34,19 @@
 
     <ul class="c-header-nav ml-auto mr-4">
         <li class="c-header-nav-item dropdown">
-            <x-utils.link class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <x-utils.link class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                          aria-expanded="false">
                 <x-slot name="text">
                     <div class="c-avatar">
-                        <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}" alt="{{ $logged_in_user->email ?? '' }}">
+                        <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}"
+                             alt="{{ $logged_in_user->email ?? '' }}">
                     </div>
                 </x-slot>
             </x-utils.link>
 
             <div class="dropdown-menu dropdown-menu-right pt-0">
                 <div class="dropdown-header bg-light py-2">
-                    <strong>@lang('Account')</strong>
+                    <strong>@lang('global.account.Account')</strong>
                 </div>
 
                 <x-utils.link
@@ -53,7 +55,7 @@
                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <x-slot name="text">
                         @lang('Logout')
-                        <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                        <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none"/>
                     </x-slot>
                 </x-utils.link>
             </div>
