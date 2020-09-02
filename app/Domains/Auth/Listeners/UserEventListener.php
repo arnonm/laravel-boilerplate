@@ -43,8 +43,6 @@ class UserEventListener
      */
     public function onCreated($event)
     {
-        //TODO: Restore back activity
-
         activity('user')
             ->performedOn($event->user)
             ->withProperties([
