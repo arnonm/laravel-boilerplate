@@ -7,6 +7,7 @@ use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use \DateTimeInterface;
 use Spatie\MediaLibrary\Models\Media;
+use Hamcrest\Text\IsEmptyString as isEmpty;
 
 class UserDetails extends Model implements HasMedia
 {
@@ -45,13 +46,15 @@ class UserDetails extends Model implements HasMedia
     private function getAvatarIcon()
     {
         $firstURl = $this->getFirstMediaUrl('avatars', 'thumb');
-        return isset($firstURl) ? $firstURl : null;
+        if ($firstURl == "") return null;
+        return $firstURl;
     }
 
     public function getAvatarIconAttribute($size = null)
     {
-        return ($this->getAvatarIcon() ??
+        $d = ($this->getAvatarIcon() ??
             'https://gravatar.com/avatar/' . md5(strtolower(trim($this->user->email))) . '?s=' . config('boilerplate.avatar.size', $size) . '&d=mp');
+        return $d;
     }
 
     public function addReplaceAvatar($replace = true)
