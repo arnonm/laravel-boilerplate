@@ -18,7 +18,6 @@ class ListUserTest extends TestCase
     public function only_a_user_with_correct_permissions_can_list_users()
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
-
         $user->syncPermissions(['admin.access.user.list']);
 
         $this->get('/admin/auth/user')->assertOk();

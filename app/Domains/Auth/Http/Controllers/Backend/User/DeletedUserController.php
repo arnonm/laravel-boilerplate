@@ -44,7 +44,7 @@ class DeletedUserController extends Controller
     {
         $this->userService->restore($deletedUser);
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('The user was successfully restored.'));
+        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('global.user.The user was successfully restored.'));
     }
 
     /**

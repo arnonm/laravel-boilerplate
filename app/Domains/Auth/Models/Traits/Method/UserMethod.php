@@ -96,11 +96,5 @@ trait UserMethod
         return $this->permissions->pluck('description');
     }
 
-    /**
-     * @param  bool  $size
-     *
-     * @return mixed|string
-     * @throws \Creativeorange\Gravatar\Exceptions\InvalidEmailException
-     */
 
 }

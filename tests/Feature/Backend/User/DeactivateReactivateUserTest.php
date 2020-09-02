@@ -20,7 +20,7 @@ class DeactivateReactivateUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['admin.auth.user.reactivate']);
+        $user->syncPermissions(['admin.access.user.reactivate']);
 
         $this->get('/admin/auth/user/deactivated')->assertOk();
 
@@ -28,7 +28,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $response = $this->get('/admin/auth/user/deactivated');
 
-        $response->assertSessionHas('flash_danger', __('global.auth.You do not have access to do that.'));
+        $response->assertSessionHas('flash_danger', __('global.access.You do not have access to do that.'));
     }
 
     /** @test */

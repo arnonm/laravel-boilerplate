@@ -8,7 +8,7 @@
     <form wire:submit.prevent="validateCode" class="form-horizontal">
         <div class="form-group row">
             <label for="code"
-                   class="col-md-4 col-form-label text-md-right">@lang('global.2fe.Authorization Code')</label>
+                   class="col-md-4 col-form-label text-md-right">@lang('global.2fa.Authorization Code')</label>
 
             <div class="col-md-6">
                 <input
@@ -17,7 +17,7 @@
                     wire:model.lazy="code"
                     minlength="6"
                     class="form-control"
-                    placeholder="{{ __('global.2fe.Authorization Code') }}"
+                    placeholder="{{ __('global.2fa.Authorization Code') }}"
                     required
                     autofocus/>
             </div>
@@ -26,7 +26,7 @@
         <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
                 <button class="btn btn-primary"
-                        type="submit">@lang('global.2fe.Enable Two Factor Authentication')</button>
+                        type="submit">@lang('global.2fa.Enable Two Factor Authentication')</button>
             </div>
         </div><!--form-group-->
     </form>

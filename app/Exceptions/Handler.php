@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
         if ($exception instanceof ModelNotFoundException) {
             return redirect()
                 ->route(homeRoute())
-                ->withFlashDanger(__('global.access.The requested resource was not found.'));
+                ->withFlashDanger(__('global.The requested resource was not found.'));
         }
 
         return parent::render($request, $exception);

@@ -1,9 +1,9 @@
 @inject('user', '\App\Domains\Auth\Models\User')
 
 @if ($role->type === $user::TYPE_ADMIN)
-    @lang('Administrator')
+    @lang('global.user.Administrator')
 @elseif ($role->type === $user::TYPE_USER)
-    @lang('User')
+    @lang('global.user.User')
 @else
-    @lang('N/A')
+    @lang('global.N/A')
 @endif

@@ -45,7 +45,7 @@ class UserDetails extends Model implements HasMedia
     private function getAvatarIcon()
     {
         $firstURl = $this->getFirstMediaUrl('avatars', 'thumb');
-        return ($firstURl != "") ? $firstURl : null;
+        return isset($firstURl) ? $firstURl : null;
     }
 
     public function getAvatarIconAttribute($size = null)

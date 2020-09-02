@@ -58,6 +58,7 @@ return [
     '2fa' => [
         "2FA" => "2FA",
         "Authorization Code" => "קוד אימות",
+        "Enable Two Factor Authentication" => "אפשר אימות  שני גורמים",
         "Two Factor Authentication Successfully Disabled" => "אימות שני גורמים הושבת בהצלחה",
         "Two-factor Authentication must be :status to view this page." => "אימות שני גורמים חייב להיות :status כדי להציג דף זה.",
         "Two Factor Recovery Codes Regenerated" => "שני קודי התאוששות גורמים התחדשו",
@@ -78,8 +79,8 @@ return [
         "Save these codes! If you lose your device and don\'t have the recovery codes you will lose access to your account forever!" => "שמור את הקודים! אם יאבדו הקודים לא תוכל להכנס לאתר שוב!",
         "Each code can only be used once!" => "ניתן להשתמש בכל קוד פעם אחת בלבד!",
         "I have stored these codes in a safe place" => "שמרתי את הקודים במקום בטוח",
-        "To enable 2FA, you\'ll need a 2FA authenticator app on your phone. Examples include: Google Authenticator, FreeOTP, Authy, andOTP, and Microsoft Authenticator (Just to name a few)." => "To enable 2FA, you\'ll need a 2FA authenticator app on your phone. Examples include: Google Authenticator, FreeOTP, Authy, andOTP, and Microsoft Authenticator (Just to name a few).",
-        "Most applications will let you set up by scanning the QR code from within the app. If you prefer, you may type the key below the QR code in manually." => "Most applications will let you set up by scanning the QR code from within the app. If you prefer, you may type the key below the QR code in manually.",
+        "To enable 2FA, you need a 2FA authenticator" => "To enable 2FA, you'll need a 2FA authenticator app on your phone. Examples include: Google Authenticator, FreeOTP, Authy, andOTP, and Microsoft Authenticator (Just to name a few).",
+        "Most applications will let QR code" => "Most applications will let you set up by scanning the QR code from within the app. If you prefer, you may type the key below the QR code in manually.",
         "View\/Regenerate Recovery Codes" => "הצג קודים לשחזור",
 
 
@@ -101,6 +102,9 @@ return [
         "There was a problem creating the role." => "הייתה בעיה ביצירת התפקיד.",
         "There was a problem deleting the role." => "הייתה בעיה במחיקת התפקיד.",
         "There was a problem updating the role." => "הייתה בעיה בעדכון התפקיד.",
+        "Create Role" => "צור תפקיד",
+        "Type" => "סוג",
+        "Role Management" => "ניהול תפקידים",
 
     ],
 
@@ -117,6 +121,8 @@ return [
         "Administrator" => "מנהל",
         "Name" => "שם",
         "E-mail Address" => "כתובת דוא\"ל",
+        "Change Password for :name" => "שנה סיסמה עבור :name",
+        "Change Password" => "שנה סיסמא",
 
     ],
 
@@ -163,13 +169,10 @@ return [
     "All Rights Reserved" => "כל הזכויות שמורות",
     "Avatar" => "אווטר",
     "Change Icon" => "שנה אווטר",
-    "Change Password for :name" => "שנה סיסמה עבור :name",
-    "Change Password" => "שנה סיסמא",
     "Clear Session" => "אפס",
     "Click here to request another" => "לחץ כאן לבקשה נוספת",
     "Confirm Password" => "אשר סיסמה",
     "Copyright" => "זכויות יוצרים",
-    "Create Role" => "צור תפקיד",
     "Create User" => "צור משתמש",
     "Current Password" => "סיסמה נוכחית",
     "Dashboard" => "לוח בקרה",
@@ -186,7 +189,6 @@ return [
     "Edit Information" => "עריכת מידע",
     "Editing :role" => "עריכת :role",
     "Enabled" => "מופעל",
-    "Enable Two Factor Authentication" => "אפשר אימות  שני גורמים",
     "Forgot Your Password?" => "שכחת ססמה?",
     "General Permissions" => "הרשאות כלליות",
     "Home" => "ראשי",
@@ -232,7 +234,6 @@ return [
     "Reset Password" => "אפס סיסמה",
     "Restore" => "שחזר",
     "Return to your account" => "חזור לחשבונך",
-    "Role Management" => "ניהול תפקידים",
     "Roles" => "תפקידים",
     "Send Confirmation E-mail" => "שלח דוא\\\"ל אישור",
     "Send Password Reset Link" => "שלח קישור לאיפוס סיסמה",

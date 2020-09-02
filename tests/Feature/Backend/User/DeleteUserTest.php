@@ -97,13 +97,13 @@ class DeleteUserTest extends TestCase
         $this->loginAsAdmin();
 
         $user = factory(User::class)->state('deleted')->create();
-        factory(UserDetails::class)->create(['user_id' => $user->id]);
+//        factory(UserDetails::class)->create(['user_id' => $user->id]);
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
         $response = $this->patch("/admin/auth/user/{$user->id}/restore");
 
-        $response->assertSessionHas(['flash_success' => __('The user was successfully restored.')]);
+        $response->assertSessionHas(['flash_success' => __('global.user.The user was successfully restored.')]);
 
         $this->assertDatabaseHas('users', ['id' => $user->id]);
     }

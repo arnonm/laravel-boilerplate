@@ -96,7 +96,7 @@ trait UserAttribute
     }
 
 
-    public function formattedAddress(): string
+    private function formattedAddress(): string
     {
         $formatted_address = $this->details->address;
         $formatted_address .= ($this->details->address2) ? ", " . $this->details->address2 : '';
@@ -116,11 +116,7 @@ trait UserAttribute
             return trans('global.not_available');
         }
 
-        $formatted_address = $this->details->address;
-        $formatted_address .= ($this->details->address2) ? ", " . $this->details->address2 : '';
-        $formatted_address .= ($this->details->city) ? ", " . $this->details->city : '';
-        $formatted_address .= ($this->details->postcode) ? ', ' . $this->details->postcode : '';
-        return $formatted_address;
+        return $this->formattedAddress();
     }
 
     public function getStartVolunteeringDateAttribute(): string

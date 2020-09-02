@@ -43,6 +43,8 @@ class UserEventListener
      */
     public function onCreated($event)
     {
+        //TODO: Restore back activity
+
         activity('user')
             ->performedOn($event->user)
             ->withProperties([
@@ -93,8 +95,9 @@ class UserEventListener
      */
     public function onRestored($event)
     {
-        activity('user')
-            ->performedOn($event->user)
+        $activity = activity('user');
+        $activity->performedOn($event->user);
+        $activity
             ->log(':causer.name restored user :subject.name');
     }
 

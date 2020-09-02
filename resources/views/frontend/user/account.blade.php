@@ -98,7 +98,7 @@
                                 @endif
 
                                 <x-utils.link
-                                    :text="__('global.Two Factor Authentication')"
+                                    :text="__('global.2fa.Two Factor Authentication')"
                                     class="nav-link"
                                     id="two-factor-authentication-tab"
                                     data-toggle="pill"

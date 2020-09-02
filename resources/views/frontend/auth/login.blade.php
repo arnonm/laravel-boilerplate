@@ -15,10 +15,11 @@
                         <x-forms.post :action="route('frontend.auth.login')">
                             <div class="form-group row">
                                 <label for="email"
-                                       class="col-md-4 col-form-label text-md-right">@lang('global.E-mail Address')</label>
+                                       class="col-md-4 col-form-label text-md-right">@lang('global.user.E-mail Address')</label>
                                 <div class="col-md-6">
                                     <input type="email" name="email" id="email" class="form-control"
-                                           placeholder="{{ __('global.E-mail Address') }}" value="{{ old('email') }}"
+                                           placeholder="{{ __('global.user.E-mail Address') }}"
+                                           value="{{ old('email') }}"
                                            maxlength="255" required autofocus autocomplete="email"/>
                                 </div>
                             </div><!--form-group-->
