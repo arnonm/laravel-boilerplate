@@ -59,7 +59,7 @@
                                     <label for="avatar">@lang('cruds.user.fields.avatar')</label>
 
                                     <div class="col-md-9 d-flex align-text-bottom row">
-                                        <img src="{{ asset($logged_in_user->avatar) }}" class=""/>
+                                        <img src="{{ asset($logged_in_user->details->avatar_icon) }}" class=""/>
                                         <div class="btn btn-primary btn-avatar">
                                             @lang('global.actions.Browse')<input type="file" name="avatar" id="avatar">
                                         </div>

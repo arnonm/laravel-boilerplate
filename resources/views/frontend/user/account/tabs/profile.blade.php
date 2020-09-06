@@ -9,7 +9,7 @@
 
         <tr>
             <th>@lang('cruds.user.fields.avatar')</th>
-            <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image"/></td>
+            <td><img src="{{ $logged_in_user->details->avatar_icon }}" class="user-profile-image"/></td>
         </tr>
 
         <tr>

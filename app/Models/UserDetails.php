@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
@@ -30,7 +31,7 @@ class UserDetails extends Model implements HasMedia
 
     public function user()
     {
-        return $this->belongsTo('App\Domains\Auth\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function registerAllMediaConversions(Media $media = null)
@@ -52,9 +53,9 @@ class UserDetails extends Model implements HasMedia
 
     public function getAvatarIconAttribute($size = null)
     {
-        $d = ($this->getAvatarIcon() ??
-            'https://gravatar.com/avatar/' . md5(strtolower(trim($this->user->email))) . '?s=' . config('boilerplate.avatar.size', $size) . '&d=mp');
-        return $d;
+        return ($this->getAvatarIcon() ??
+            'https://gravatar.com/avatar/' . md5(strtolower(trim($this->user->email))) .
+            '?s=' . config('boilerplate.avatar.size', $size) . '&d=mp');
     }
 
     public function addReplaceAvatar($replace = true)

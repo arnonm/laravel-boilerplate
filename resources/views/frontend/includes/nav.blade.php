@@ -62,7 +62,8 @@
                         aria-expanded="false"
                     >
                         <x-slot name="text">
-                            <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->avatar }}"/>
+                            <img class="rounded-circle" style="max-height: 20px"
+                                 src="{{ $logged_in_user->details->avatar_icon }}"/>
                             <span class="text-white">
                                     {{ $logged_in_user->name }}
                                 </span>

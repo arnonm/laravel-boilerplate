@@ -23,13 +23,13 @@ trait UserAttribute
                 Hash::make($password);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAvatarAttribute()
-    {
-        return (optional($this->details)->avatar_icon);
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getAvatarAttribute()
+//    {
+//        return ($this->details->avatar_icon);
+//    }
 
     /**
      * @return string

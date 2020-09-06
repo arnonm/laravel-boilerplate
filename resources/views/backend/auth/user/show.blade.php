@@ -21,7 +21,7 @@
 
                 <tr>
                     <th>@lang('global.Avatar')</th>
-                    <td><img src="{{ $user->avatar }}" class="user-profile-image"/></td>
+                    <td><img src="{{ $user->details->avatar_icon }}" class="user-profile-image"/></td>
                 </tr>
 
                 <tr>

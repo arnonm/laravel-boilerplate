@@ -38,7 +38,7 @@
                           aria-expanded="false">
                 <x-slot name="text">
                     <div class="c-avatar">
-                        <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}"
+                        <img class="c-avatar-img" src="{{ $logged_in_user->details->avatar_icon }}"
                              alt="{{ $logged_in_user->email ?? '' }}">
                     </div>
                 </x-slot>

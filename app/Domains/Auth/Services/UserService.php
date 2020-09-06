@@ -127,6 +127,7 @@ class UserService extends BaseService
                 'password' => $data['password'],
                 'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
                 'active' => isset($data['active']) && $data['active'] === '1',
+
             ]);
 
             $user->syncRoles($data['roles'] ?? []);
