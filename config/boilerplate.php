@@ -189,4 +189,8 @@ return [
     |
     */
     'testing' => env('APP_TESTING', false),
+
+    'date_format' => 'd-m-Y',
+    'time_format' => 'H:i:s',
+
 ];
